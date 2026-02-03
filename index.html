@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fit Frenzy - Arcade Fitness Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="damageEffect" class="damage-effect"></div>
+        
+        <div id="ui">
+            <div id="scoreContainer">
+                <div id="scoreLabel">PUNTOS</div>
+                <div id="score">0</div>
+            </div>
+            
+            <div id="centerUI">
+                <div id="intensityContainer">
+                    <div id="intensityLabel">INTENSIDAD</div>
+                    <div id="intensity">1.0x</div>
+                    <div class="intensity-bar">
+                        <div id="intensityFill" class="intensity-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+                <div id="timeContainer">
+                    <div id="timeLabel">TIEMPO</div>
+                    <div id="time">00:00</div>
+                </div>
+            </div>
+            
+            <div id="healthContainer">
+                <div id="healthLabel">SALUD</div>
+                <div id="healthBar">
+                    <div id="healthFill" style="width: 100%;"></div>
+                    <div id="healthText">100%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="touchControls">
+            <div class="touch-button" id="leftButton">←</div>
+            <div class="touch-button" id="rightButton">→</div>
+        </div>
+        
+        <div id="boostIndicator" class="boost-indicator">
+            ¡BOOST DE VELOCIDAD!
+        </div>
+        
+        <div id="startScreen" class="screen">
+            <h1 class="title">FIT FRENZY</h1>
+            <p class="subtitle">¡Atrapa los objetos saludables y evita la comida chatarra!</p>
+            
+            <div id="startRecordContainer" class="record-container">
+                <div class="record-title">RÉCORD ACTUAL</div>
+                <div id="startRecordScore" class="record-score">0</div>
+                <div id="startRecordDetails" style="font-size: 12px; color: #aaa; margin-top: 5px;">Tiempo: 00:00</div>
+            </div>
+            
+            <div class="instructions">INSTRUCCIONES</div>
+            
+            <div class="controls">
+                <span class="key">←</span> <span class="key">→</span> para mover
+                <span style="margin: 0 5px;">|</span>
+                <span class="key">P</span> para pausar
+            </div>
+            
+            <div class="objects-list">
+                <div class="object-category good-category">
+                    <div class="category-title">OBJETOS BUENOS (+puntos)</div>
+                    <div id="goodItemsList"></div>
+                </div>
+                
+                <div class="object-category bad-category">
+                    <div class="category-title">OBJETOS MALOS (-salud)</div>
+                    <div id="badItemsList"></div>
+                </div>
+            </div>
+            
+            <p class="tip">¡La dificultad aumenta progresivamente con tus puntos! Cada 100 puntos, el juego se vuelve más rápido y caen más objetos.</p>
+            
+            <button id="startButton" class="pulse">COMENZAR JUEGO</button>
+            
+            <div style="margin-top: 20px;">
+                <button id="resetRecordButton" style="background: linear-gradient(145deg, #dc4646, #c23e3e); min-height: 40px; min-width: 160px; font-size: 14px; padding: 10px 15px;">
+                    REINICIAR RÉCORD
+                </button>
+            </div>
+        </div>
+        
+        <div id="pauseScreen" class="screen hidden">
+            <h1>JUEGO PAUSADO</h1>
+            <br>
+            <button id="resumeButton">CONTINUAR</button>
+            <button id="restartButton">REINICIAR</button>
+            <button id="menuButton">MENÚ</button>
+        </div>
+        
+        <div id="gameOverScreen" class="screen hidden">
+            <h1>GAME OVER</h1>
+            <br>
+            <p>Puntuación final: <span id="finalScore">0</span></p>
+            <p>Intensidad máxima: <span id="finalIntensity">1.0x</span></p>
+            <p>Tiempo jugado: <span id="finalTime">00:00</span></p>
+            
+            <div id="recordContainer" class="record-container">
+                <div class="record-title">TU RÉCORD</div>
+                <div id="recordScore" class="record-score">0</div>
+                <div id="recordDetails" style="font-size: 12px; color: #aaa; margin-top: 5px;"></div>
+            </div>
+            
+            <div id="newRecordMessage" class="record-container new-record" style="display: none; margin-top: 10px;">
+                <div style="font-size: 16px; color: #ffd700; font-weight: bold;">🎉 ¡NUEVO RÉCORD! 🎉</div>
+                <div style="font-size: 14px; margin-top: 5px;">¡Felicidades! Has superado tu mejor puntuación</div>
+            </div>
+            
+            <br>
+            <button id="playAgainButton">JUGAR DE NUEVO</button>
+            <button id="menuButton2">MENÚ PRINCIPAL</button>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/fallingObject.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
